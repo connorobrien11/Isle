@@ -1,0 +1,11 @@
+local id
+local part
+local oldhf;
+oldhf = hookfunction(getrawmetatable(game).__namecall, newcclosure(function(self, ...)
+    local args = {...} -- store argument
+    if getnamecallmethod() == "InvokeServer" and self.Name == "BypassRequest"   then
+        id = args[1]
+        part = args[2]
+    end
+    return oldhf(self, ...)
+end))
